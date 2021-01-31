@@ -1,35 +1,35 @@
 import request from '@/utils/request'
 
-export function login(data) {
-  return request({
-    url: '/vue-element-admin/user/login',
-    method: 'post',
-    data
-  })
-}
-
 // export function login(data) {
 //   return request({
-//     url: '/user/userlogin',  //地址指向新的接口
+//     url: '/vue-element-admin/user/login',
 //     method: 'post',
 //     data
 //   })
 // }
 
-export function getInfo(token) {
+export function login(data) {
   return request({
-    url: '/vue-element-admin/user/info',
-    method: 'get',
-    params: { token }
+    url: '/user/userlogin',  //地址指向新的接口
+    method: 'post',
+    data
   })
 }
+
 // export function getInfo(token) {
 //   return request({
-//     url: '/user/GetUserinfo',
-//     method: 'post',
+//     url: '/vue-element-admin/user/info',
+//     method: 'get',
 //     params: { token }
 //   })
 // }
+export function getInfo(token) {
+  return request({
+    url: '/user/GetUserinfo',
+    method: 'post',
+    params: { token }
+  })
+}
 
 
 
