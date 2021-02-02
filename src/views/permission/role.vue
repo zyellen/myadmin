@@ -54,7 +54,7 @@
 
     <el-dialog
       :visible.sync="dialogVisible"
-      :title="dialogType === 'edit' ? 'Edit Role' : '新增角色'"
+      :title="dialogType === 'edit' ? '编辑角色' : '新增角色'"
     >
       <el-form :model="role" label-width="80px" label-position="left">
         <el-form-item label="用户名">
@@ -238,12 +238,12 @@ export default {
       this.dialogVisible = true;
       this.checkStrictly = true;
       this.role = deepClone(scope.row);
-      this.$nextTick(() => {
-        const routes = this.generateRoutes(this.role.routes);
-        this.$refs.tree.setCheckedNodes(this.generateArr(routes));
-        // set checked state of a node not affects its father and child nodes
-        this.checkStrictly = false;
-      });
+      // this.$nextTick(() => {
+      //   const routes = this.generateRoutes(this.role.routes);
+      //   this.$refs.tree.setCheckedNodes(this.generateArr(routes));
+      //   // set checked state of a node not affects its father and child nodes
+      //   this.checkStrictly = false;
+      // });
     },
     handleDelete({ $index, row }) {
       this.$confirm("是否要删除该用户?", "警告", {
@@ -297,10 +297,13 @@ console.log(e)
       return res;
     },
     async confirmRole() {
-      console.log("this", this.role);
-      addUser(this.role)
+     console.log("this", this.role);
+if(this.dialogType == 'new'){
+addUser(this.role)
         .then((res) => {
           if (res.code == 20000) {
+            this.getRoles()
+            this.dialogVisible = false
             this.$notify({
               title: "Success",
               dangerouslyUseHTMLString: true,
@@ -312,6 +315,28 @@ console.log(e)
         .catch((e) => {
           console.log(e);
         });
+}else{
+
+updateRole(this.role)
+        .then((res) => {
+          if (res.code == 20000) {
+            this.getRoles()
+            this.dialogVisible = false
+            this.$notify({
+              title: "Success",
+              dangerouslyUseHTMLString: true,
+              message: "修改用户信息成功",
+              type: "success",
+            });
+          }
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+
+}
+
+      
 
       // const isEdit = this.dialogType === 'edit'
 

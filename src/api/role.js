@@ -37,10 +37,10 @@ export function findAll() {
 }
 
 
-export function updateRole(id, data) {
+export function updateRole(data) {
   return request({
-    url: `/vue-element-admin/role/${id}`,
-    method: 'put',
+    url: `/user/updataUserInfo`,
+    method: 'post',
     data
   })
 }
