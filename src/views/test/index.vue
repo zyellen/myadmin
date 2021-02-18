@@ -338,8 +338,8 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
 let OSS = require('ali-oss')
 let client = new OSS({
   region: 'oss-cn-beijing',
-  accessKeyId: 'LTAI4G9gxPJMo7mznAYCnQdk',
-  accessKeySecret: 'U6V7iUSej9Mdg3QQ8zu39hMtSaSQuL',
+  accessKeyId: '',
+  accessKeySecret: '',
   bucket: 'czyupimg'
 })
 
