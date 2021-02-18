@@ -126,11 +126,13 @@ export default {
     var checkeIsAdmin = (rule, value, callback) => {
       console.log('1212', value)
       if (!value) {
+        this.yesIsadmin=true
         return callback(new Error('权限不能为空'))
       } else if (value == 0 || value == 1) {
+this.yesIsadmin=false
         return callback()
       } else {
-        // this.yesIsadmin=true
+        this.yesIsadmin=true
         return callback(new Error('必须为0或者1'))
         // console.log('sssss',this.yesIsadmin)
       }
@@ -333,7 +335,7 @@ export default {
     async confirmRole() {
       console.log('this', this.yesIsadmin)
 
-      //  if(this.yesIsadmin){
+       if(!this.yesIsadmin){
       if (this.dialogType == 'new') {
         addUser(this.role)
           .then((res) => {
@@ -369,15 +371,15 @@ export default {
             console.log(e)
           })
       }
-      //  }else{
-      //  this.$notify({
-      //       title: "添加失败",
-      //       dangerouslyUseHTMLString: true,
-      //       message: "新增用户失败",
-      //       type: "error",
-      //     });
+       }else{
+       this.$notify({
+            title: "添加失败",
+            dangerouslyUseHTMLString: true,
+            message: "新增用户失败",
+            type: "error",
+          });
 
-      //  }
+       }
       //
 
       // const isEdit = this.dialogType === 'edit'

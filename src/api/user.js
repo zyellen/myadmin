@@ -7,7 +7,13 @@ import request from '@/utils/request'
 //     data
 //   })
 // }
-
+// export function getInfo(token) {
+//   return request({
+//     url: '/vue-element-admin/user/info',
+//     method: 'get',
+//     params: { token }
+//   })
+// }
 export function login(data) {
   return request({
     url: '/user/userlogin',  //地址指向新的接口
@@ -16,13 +22,7 @@ export function login(data) {
   })
 }
 
-// export function getInfo(token) {
-//   return request({
-//     url: '/vue-element-admin/user/info',
-//     method: 'get',
-//     params: { token }
-//   })
-// }
+
 export function getInfo(token) {
   return request({
     url: '/user/GetUserinfo',

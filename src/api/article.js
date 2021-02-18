@@ -1,10 +1,29 @@
 import request from '@/utils/request'
 
+// export function fetchList(query) {
+//   return request({
+//     url: '/vue-element-admin/article/list',
+//     method: 'get',
+//     params: query
+//   })
+// }
+
 export function fetchList(query) {
   return request({
-    url: '/vue-element-admin/article/list',
+    url: '/website/findAll',
     method: 'get',
     params: query
+  })
+}
+
+
+//新加
+
+export function createArticle(data) {
+  return request({
+    url: '/website/addwebsite',
+    method: 'post',
+    data
   })
 }
 
@@ -24,17 +43,19 @@ export function fetchPv(pv) {
   })
 }
 
-export function createArticle(data) {
+
+
+export function updateArticle(data) {
   return request({
-    url: '/vue-element-admin/article/create',
+    url: '/website/updatewebsite',
     method: 'post',
     data
   })
 }
 
-export function updateArticle(data) {
+export function deletewebsite(data) {
   return request({
-    url: '/vue-element-admin/article/update',
+    url: '/website/deletewebsite',
     method: 'post',
     data
   })
